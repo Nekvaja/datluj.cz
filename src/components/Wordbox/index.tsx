@@ -9,17 +9,17 @@ interface IWordboxProp {
   onWordsCompleted: () => void,
 }
 
-const Wordbox : React.FC<IWordboxProp> = ({ word, onFinish, active, onMistakeCount, onWordsCompleted }) => {
+const Wordbox : React.FC<IWordboxProp> = ({ word, onFinish, active, onMistakeCount, onWordsCompleted}) => {
   const [lettersLeft, setLettersLeft] = useState<string>(word);  
   const [mistake, setMistake] = useState<boolean>(false);
   const [isFinishAnim, setIsFinishAnim] = useState<boolean>(false);
- 
-        
+
   useEffect(() => {
 
     const handleKeyup = (e: KeyboardEvent) => {
       if (e.key === lettersLeft.slice(0,1)) {
-        setMistake(false)
+        setMistake(false);
+
         if (lettersLeft.length === 1) {
           setIsFinishAnim(true);
           onWordsCompleted();
