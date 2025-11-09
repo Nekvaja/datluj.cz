@@ -21,16 +21,23 @@ const generateWord = (size: number) => {
 
 const Stage = () => {
   const [words, setWords] = useState<string[]>(['jahoda', 'hadice', 'kostka']);
+  const [mistakeCount, setMistakeCount] = useState<number>(0);
 
   const handleFinish = () => {
     setWords([...words.slice(1), generateWord(6)]);
   }
 
+  const handleMistakeCount = () => {
+    setMistakeCount((prev) => {
+      return prev + 1;
+    })
+  }
+
   return (
     <div className="stage">
-      <div className="stage__mistakes">Chyb: 0</div>
+      <div className="stage__mistakes">Chyb: {mistakeCount}</div>
       <div className="stage__words">
-        {words.map((word, index) => <Wordbox word={word} key={word} onFinish={handleFinish} active={index === 0 ? true : false} />)}
+        {words.map((word, index) => <Wordbox word={word} key={word} onFinish={handleFinish} active={index === 0 ? true : false} onMistakeCount={handleMistakeCount} />)}
       </div>
     </div>
   );
