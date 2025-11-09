@@ -24,7 +24,12 @@ const Stage = () => {
   const [mistakeCount, setMistakeCount] = useState<number>(0);
 
   const handleFinish = () => {
-    setWords([...words.slice(1), generateWord(6)]);
+    setWords((prev) => {
+      const nextWord = generateWord(6);
+      if (nextWord) {
+        return [...prev.slice(1), nextWord] 
+      } return prev;
+  });
   }
 
   const handleMistakeCount = () => {
@@ -37,7 +42,7 @@ const Stage = () => {
     <div className="stage">
       <div className="stage__mistakes">Chyb: {mistakeCount}</div>
       <div className="stage__words">
-        {words.map((word, index) => <Wordbox word={word} key={word} onFinish={handleFinish} active={index === 0 ? true : false} onMistakeCount={handleMistakeCount} />)}
+        {words.map((word, index) => <Wordbox word={word} key={word} onFinish={handleFinish} active={index === 0} onMistakeCount={handleMistakeCount} />)}
       </div>
     </div>
   );
