@@ -6,12 +6,14 @@ interface IWordboxProp {
   onFinish: () => void,
   active: boolean,
   onMistakeCount: () => void,
+  onWordsCompleted: () => void,
 }
 
-const Wordbox : React.FC<IWordboxProp> = ({ word, onFinish, active, onMistakeCount }) => {
+const Wordbox : React.FC<IWordboxProp> = ({ word, onFinish, active, onMistakeCount, onWordsCompleted }) => {
   const [lettersLeft, setLettersLeft] = useState<string>(word);  
   const [mistake, setMistake] = useState<boolean>(false);
-  const [isFinishAnim, setIsFinishAnim] = useState<boolean>(false)
+  const [isFinishAnim, setIsFinishAnim] = useState<boolean>(false);
+ 
         
   useEffect(() => {
 
@@ -20,6 +22,7 @@ const Wordbox : React.FC<IWordboxProp> = ({ word, onFinish, active, onMistakeCou
         setMistake(false)
         if (lettersLeft.length === 1) {
           setIsFinishAnim(true);
+          onWordsCompleted();
 
           setTimeout(() => onFinish(), 100)
 
