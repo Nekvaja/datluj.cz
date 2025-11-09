@@ -13,13 +13,44 @@
   z-index: 1;
 }
 
+@keyframes shake {
+  0%   { transform: translateX(0); }
+  20%  { transform: translateX(-4px); }
+  40%  { transform: translateX(4px); }
+  60%  { transform: translateX(-4px); }
+  80%  { transform: translateX(4px); }
+  100% { transform: translateX(0); }
+}
+
 .wordbox--mistake {
   background-color: #e64747;
   color: white;
+  animation: shake 0.25s ease-in-out;
 }
 
 .wordbox.active::first-letter {
   font-size: 1.5rem;
   color: white;
 }
+
+.wordbox.active {
+  transform: scale(1.1);
+  transition: transform 0.1s ease;
+}
+
+@keyframes shrinkOut {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+.wordbox--fadeout {
+  animation: shrinkOut 0.1s ease-out forwards;
+}
  
+

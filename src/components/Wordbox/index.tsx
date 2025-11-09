@@ -11,6 +11,7 @@ interface IWordboxProp {
 const Wordbox : React.FC<IWordboxProp> = ({ word, onFinish, active, onMistakeCount }) => {
   const [lettersLeft, setLettersLeft] = useState<string>(word);  
   const [mistake, setMistake] = useState<boolean>(false);
+  const [isFinishAnim, setIsFinishAnim] = useState<boolean>(false)
         
   useEffect(() => {
 
@@ -18,7 +19,10 @@ const Wordbox : React.FC<IWordboxProp> = ({ word, onFinish, active, onMistakeCou
       if (e.key === lettersLeft.slice(0,1)) {
         setMistake(false)
         if (lettersLeft.length === 1) {
-          onFinish();
+          setIsFinishAnim(true);
+
+          setTimeout(() => onFinish(), 100)
+
         } 
            setLettersLeft((prev) => prev.slice(1))
     } else {
@@ -42,9 +46,12 @@ const Wordbox : React.FC<IWordboxProp> = ({ word, onFinish, active, onMistakeCou
   } 
   
   if (mistake) {
-    mistakeClassName += " wordbox--mistake"
+    mistakeClassName += " wordbox--mistake";
   }
 
+  if (isFinishAnim) {
+    mistakeClassName += " wordbox--fadeout";
+  }
 
   return (
     <div className={mistakeClassName}>{lettersLeft}</div>
