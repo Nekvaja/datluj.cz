@@ -35,8 +35,19 @@ const Wordbox : React.FC<IWordboxProp> = ({ word, onFinish, active, onMistakeCou
 
   }, [lettersLeft, onFinish, active, onMistakeCount])
 
+  let mistakeClassName : string = 'wordbox';
+
+  if (active) {
+    mistakeClassName += " active";
+  } 
+  
+  if (mistake) {
+    mistakeClassName += " wordbox--mistake"
+  }
+
+
   return (
-    <div className={mistake ? "wordbox wordbox--mistake" : "wordbox"}>{lettersLeft}</div>
+    <div className={mistakeClassName}>{lettersLeft}</div>
   );
 };
 

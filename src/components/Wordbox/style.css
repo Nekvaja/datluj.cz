@@ -17,3 +17,9 @@
   background-color: #e64747;
   color: white;
 }
+
+.wordbox.active::first-letter {
+  font-size: 1.5rem;
+  color: white;
+}
+ 
