@@ -17,3 +17,16 @@
   flex-wrap: wrap;
   align-items: center;
 }
+
+.stage__timer-bar {
+  width: 100%;
+  height: 10px;
+  border-radius: 20px;
+  background-color: grey;
+}
+
+.stage__timer-fill {
+  height: 10px;
+  border-radius: 20px;
+  background-color: #8fb935;
+}

@@ -25,7 +25,8 @@ const Stage = () => {
   const [wordsCompleted, setWordsCompleted] = useState<number>(0);
   const [wordHasMistake, setWordHasMistake] = useState<boolean>(false);
   const [correctWords, setCorrectWords] = useState<number>(0);
-   const [timeLeft, setTimeleft] = useState<number>(5000);
+  const [totalTime, setTotalTime] = useState<number>(5000);
+  const [timeLeft, setTimeleft] = useState<number>(totalTime);
 
   const handleFinish = () => {
     setWords((prev) => {
@@ -62,7 +63,7 @@ const Stage = () => {
       setTimeleft((prev) => { return prev -1})
     }, 1);
 
-    if (timeLeft === 0){
+    if (timeLeft === 0 || (timeLeft > 0 && correctWords >= 1)){
       clearInterval(interval)
     };
 
@@ -80,16 +81,30 @@ const Stage = () => {
 
   const timer = formatTime(timeLeft);
 
+   (timeLeft === 0 && correctWords < 2) && console.log('prohra');
+   (timeLeft > 0 && correctWords >= 2) && console.log('výhra');
+
+  const percentage : number = (timeLeft / totalTime) * 100;
+
 
   return (
     <div className="stage">
-      <div className="stage__timer">{timer}</div>
-      <div className="stage__mistakes">Chyb: {mistakeCount}</div>
-      <div className="stage__mistakes">Hotovo: {wordsCompleted}</div>
-      <div className="stage__mistakes">Správně: {correctWords}</div>
+      <div className='stage__timer'>{timer}</div>
+      <div className="stage__timer-bar">
+        <div 
+          className='stage__timer-fill'
+          style={{width: `${percentage}%`}}
+          ></div>
+      </div>
+      <div className='stage__target'>cíl: 10 slov bez chyby</div>
+      <div className="stage__correct">{correctWords}</div>
+      
       <div className="stage__words">
         {words.map((word, index) => <Wordbox word={word} key={word} onFinish={handleFinish} active={index === 0} onMistakeCount={handleMistakeCount} onWordsCompleted={handleSetWordsCompleted}/>)}
       </div>
+
+      <div className="stage__mistakes">Celkem chyb: {mistakeCount}</div>
+      <div className="stage__mistakes">Celkem dokončeno: {wordsCompleted} slov</div>
     </div>
   );
 };
