@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Wordbox from '../Wordbox';
 import wordList from '../../word-list';
 import './style.css';
@@ -25,6 +25,7 @@ const Stage = () => {
   const [wordsCompleted, setWordsCompleted] = useState<number>(0);
   const [wordHasMistake, setWordHasMistake] = useState<boolean>(false);
   const [correctWords, setCorrectWords] = useState<number>(0);
+   const [timeLeft, setTimeleft] = useState<number>(5000);
 
   const handleFinish = () => {
     setWords((prev) => {
@@ -56,8 +57,33 @@ const Stage = () => {
     })
   }
 
+    useEffect(() => {
+     const interval = window.setInterval(() => {
+      setTimeleft((prev) => { return prev -1})
+    }, 1);
+
+    if (timeLeft === 0){
+      clearInterval(interval)
+    };
+
+    return () => clearInterval(interval); 
+
+  }, [timeLeft]);
+
+  const formatTime = (ms: number) => {
+    
+    const seconds = Math.floor((ms % 60000) / 1000);
+    const miliseconds = Math.floor(ms % 1000);
+
+    return `${seconds.toString().padStart(2,'0')} : ${miliseconds.toString().padStart(3, '0')}`
+  };
+
+  const timer = formatTime(timeLeft);
+
+
   return (
     <div className="stage">
+      <div className="stage__timer">{timer}</div>
       <div className="stage__mistakes">Chyb: {mistakeCount}</div>
       <div className="stage__mistakes">Hotovo: {wordsCompleted}</div>
       <div className="stage__mistakes">Správně: {correctWords}</div>

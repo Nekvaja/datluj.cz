@@ -40,7 +40,7 @@ const Wordbox : React.FC<IWordboxProp> = ({ word, onFinish, active, onMistakeCou
       document.removeEventListener('keyup', handleKeyup)
     }
 
-  }, [lettersLeft, onFinish, active, onMistakeCount])
+  }, [lettersLeft, onFinish, active, onMistakeCount]);
 
   let mistakeClassName : string = 'wordbox';
 
