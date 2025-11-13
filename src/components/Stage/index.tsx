@@ -3,6 +3,7 @@ import Wordbox from '../Wordbox';
 import wordList from '../../word-list';
 import './style.css';
 import { ClockIcon } from '../ClockIcon';
+import { GameResult } from '../GameResult';
 
 // TODO: temporary disable function - remove next line when you start using it
 /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
@@ -28,6 +29,7 @@ const Stage = () => {
   const [correctWords, setCorrectWords] = useState<number>(0);
   const [totalTime, setTotalTime] = useState<number>(5000);
   const [timeLeft, setTimeleft] = useState<number>(totalTime);
+  const [showGameResult, setShowGameResult] = useState<boolean>(false);
 
   const handleFinish = () => {
     setWords((prev) => {
@@ -66,11 +68,12 @@ const Stage = () => {
 
     if (timeLeft === 0 || (timeLeft > 0 && correctWords >= 1)){
       clearInterval(interval)
+      setShowGameResult(true)
     };
 
     return () => clearInterval(interval); 
 
-  }, [timeLeft]);
+  }, [timeLeft, showGameResult]);
 
   const formatTime = (ms: number) => {
     
@@ -90,6 +93,7 @@ const Stage = () => {
 
 
   return (
+    <>
     <div className="stage">
       <div className="stage__timer-bar">
         <div 
@@ -111,7 +115,12 @@ const Stage = () => {
       <div className="stage__finished">Celkem dokončeno: {wordsCompleted} slov</div>
     </div>
     </div>
+
+     {showGameResult && <GameResult/>}
+    </>
   );
+
+ 
 };
 
 export default Stage;
