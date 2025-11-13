@@ -15,15 +15,18 @@
     gap: 2rem;
 }
 
-.gameresult-btn {
-    
-}
-
 .gameResult__result {
-    color: #8fb935;
     font-size: 3rem;
     font-weight: 800;
     line-height: 1;
+}
+
+.gameresult__win {
+    color: #8fb935;
+}
+
+.gameresult__loss {
+    color: red;
 }
 
 .gameresult__action {
@@ -36,4 +39,5 @@
 
 .gameresult__exit {
     font-weight: 600;
+    color: white;
 }

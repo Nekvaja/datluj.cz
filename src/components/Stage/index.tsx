@@ -30,6 +30,7 @@ const Stage = () => {
   const [totalTime, setTotalTime] = useState<number>(5000);
   const [timeLeft, setTimeleft] = useState<number>(totalTime);
   const [showGameResult, setShowGameResult] = useState<boolean>(false);
+  const [win, setWin] = useState<boolean>(false);
 
   const handleFinish = () => {
     setWords((prev) => {
@@ -66,10 +67,17 @@ const Stage = () => {
       setTimeleft((prev) => { return prev -1})
     }, 1);
 
-    if (timeLeft === 0 || (timeLeft > 0 && correctWords >= 1)){
+    if (timeLeft === 0){
       clearInterval(interval)
       setShowGameResult(true)
     };
+
+    if ((timeLeft > 0 && correctWords >= 1)) {
+      clearInterval(interval)
+      setShowGameResult(true)
+      setWin(true)
+    }
+   
 
     return () => clearInterval(interval); 
 
@@ -85,9 +93,6 @@ const Stage = () => {
   };
 
   const timer = formatTime(timeLeft);
-
-   (timeLeft === 0 && correctWords < 2) && console.log('prohra');
-   (timeLeft > 0 && correctWords >= 2) && console.log('výhra');
 
   const percentage : number = (timeLeft / totalTime) * 100;
 
@@ -116,7 +121,7 @@ const Stage = () => {
     </div>
     </div>
 
-     {showGameResult && <GameResult/>}
+     {showGameResult && <GameResult win={win}/>}
     </>
   );
 
