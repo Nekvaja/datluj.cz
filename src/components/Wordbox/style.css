@@ -24,7 +24,7 @@
 
 .wordbox--mistake {
   background-color: #e64747;
-  color: white;
+  color: black;
   animation: shake 0.25s ease-in-out;
 }
 

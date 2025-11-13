@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Wordbox from '../Wordbox';
 import wordList from '../../word-list';
 import './style.css';
+import { ClockIcon } from '../ClockIcon';
 
 // TODO: temporary disable function - remove next line when you start using it
 /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
@@ -74,9 +75,10 @@ const Stage = () => {
   const formatTime = (ms: number) => {
     
     const seconds = Math.floor((ms % 60000) / 1000);
-    const miliseconds = Math.floor(ms % 1000);
+    const miliseconds = Math.floor((ms % 1000) / 10);
 
-    return `${seconds.toString().padStart(2,'0')} : ${miliseconds.toString().padStart(3, '0')}`
+    return `${seconds.toString().padStart(2,'0')} : ${miliseconds.toString().padStart(2, '0')}` 
+
   };
 
   const timer = formatTime(timeLeft);
@@ -89,7 +91,6 @@ const Stage = () => {
 
   return (
     <div className="stage">
-      <div className='stage__timer'>{timer}</div>
       <div className="stage__timer-bar">
         <div 
           className='stage__timer-fill'
@@ -97,14 +98,18 @@ const Stage = () => {
           ></div>
       </div>
       <div className='stage__target'>cíl: 10 slov bez chyby</div>
+      <div className='stage__timer'>
+        <ClockIcon/>
+         {timer}</div> 
       <div className="stage__correct">{correctWords}</div>
       
       <div className="stage__words">
         {words.map((word, index) => <Wordbox word={word} key={word} onFinish={handleFinish} active={index === 0} onMistakeCount={handleMistakeCount} onWordsCompleted={handleSetWordsCompleted}/>)}
       </div>
-
+    <div className='stage__stats'>
       <div className="stage__mistakes">Celkem chyb: {mistakeCount}</div>
-      <div className="stage__mistakes">Celkem dokončeno: {wordsCompleted} slov</div>
+      <div className="stage__finished">Celkem dokončeno: {wordsCompleted} slov</div>
+    </div>
     </div>
   );
 };
