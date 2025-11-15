@@ -6,8 +6,7 @@ import { ClockIcon } from '../ClockIcon';
 import { GameResult } from '../GameResult';
 import { Countdown } from '../Countdown';
 
-// TODO: temporary disable function - remove next line when you start using it
-/* eslint-disable-next-line @typescript-eslint/no-unused-vars */
+
 const generateWord = (size: number) => {
   const sizeIndex = size === undefined
     ? Math.floor(Math.random() * wordList.length)
