@@ -9,13 +9,16 @@ import type { startGameHandler } from '../../App';
 
 
 const generateWord = (size: number) => {
-  const sizeIndex = size === undefined
-    ? Math.floor(Math.random() * wordList.length)
-    : size - 3;
-  
-  if (sizeIndex < 0 || sizeIndex >= wordList.length) {
-    return null;
-  }
+   let sizeIndex = size -3
+
+    if (sizeIndex < 0) {
+      sizeIndex = 0
+    }
+
+    if (sizeIndex >= wordList.length) {
+      sizeIndex = wordList.length -1;
+    }
+
   
   const words = wordList[sizeIndex];
   const wordIndex = Math.floor(Math.random() * words.length);
@@ -38,7 +41,7 @@ export interface stageProps {
 
 const Stage = ({onStartGame} : stageProps) => {
   const [letterCount, setLetterCount] = useState<number>(3);
-  const [words, setWords] = useState<(string | null)[]>(() => createWordsForLevel(letterCount));
+  const [words, setWords] = useState<(string)[]>(() => createWordsForLevel(letterCount));
   const [mistakeCount, setMistakeCount] = useState<number>(0);
   const [wordsCompleted, setWordsCompleted] = useState<number>(0);
   const [wordHasMistake, setWordHasMistake] = useState<boolean>(false);

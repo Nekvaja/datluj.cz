@@ -15,26 +15,34 @@ export const GameResult = ({ done, onNextStep, win, onStartGame }: GameResultPro
       return (
         <div className="gameResult gameresult__win">
           <div className="gameResult__result">Výborně! Zvládl/a jsi všechna slova.</div>
-          <div className="gameresult__action" onClick={onNextStep}>
+          <button
+                type="button" 
+                className="gameresult__action" 
+                onClick={onNextStep}>
             Hrát znovu
-          </div>
-          <div 
+          </button>
+         <button
+            type="button"
             className="gameresult__exit"
-            onClick={onStartGame}
-            >Ukončit</div>
+            onClick={onStartGame}    
+            >Ukončit</button>
         </div>
       );
     } else {
       return (
         <div className="gameResult gameresult__done">
           <div className="gameResult__result">Splněno</div>
-          <div className="gameresult__action" onClick={onNextStep}>
+          <button 
+            type="button"
+            className="gameresult__action" 
+            onClick={onNextStep}>
             Pokračovat na další úroveň
-          </div>
-          <div 
+          </button>
+          <button
+            type="button"
             className="gameresult__exit"
-            onClick={onStartGame}
-            >Ukončit</div>
+            onClick={onStartGame}    
+            >Ukončit</button>
         </div>
       );
     }
@@ -42,13 +50,17 @@ export const GameResult = ({ done, onNextStep, win, onStartGame }: GameResultPro
     return (
       <div className="gameResult gameresult__loss">
         <div className="gameResult__result">Nesplněno</div>
-        <div className="gameresult__action" onClick={onNextStep}>
+        <button 
+            type="button"
+            className="gameresult__action" 
+            onClick={onNextStep}>
           Zkusit znovu
-        </div>
-        <div 
+        </button>
+        <button
+            type="button"
             className="gameresult__exit"
             onClick={onStartGame}    
-            >Ukončit</div>
+            >Ukončit</button>
       </div>
     );
   }

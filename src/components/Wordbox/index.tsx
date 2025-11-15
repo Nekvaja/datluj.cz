@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './style.css';
 
 interface IWordboxProp {
-  word: string | null,
+  word: string,
   onFinish: () => void,
   active: boolean,
   onMistakeCount: () => void,

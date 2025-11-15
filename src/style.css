@@ -14,3 +14,12 @@ html {
   margin-left: auto;
   text-align: center;
 }
+
+button {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
