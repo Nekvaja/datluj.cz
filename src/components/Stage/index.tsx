@@ -6,6 +6,7 @@ import { ClockIcon } from '../ClockIcon';
 import { GameResult } from '../GameResult';
 import { Countdown } from '../Countdown';
 import type { startGameHandler } from '../../App';
+import levels from '../../levels-list';
 
 
 const generateWord = (size: number) => {
