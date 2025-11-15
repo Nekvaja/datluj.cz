@@ -192,7 +192,7 @@ const Stage = ({onStartGame} : stageProps) => {
       <div className="stage__correct">{correctWords}</div>
       
       <div className="stage__words">
-        {words.map((word, index) => <Wordbox word={word} key={word} onFinish={handleFinish} active={index === 0} onMistakeCount={handleMistakeCount} onWordsCompleted={handleSetWordsCompleted} showGameResult={showGameResult}/>)}
+        {words.map((word, index) => <Wordbox word={word} key={word} onFinish={handleFinish} active={index === 0} onMistakeCount={handleMistakeCount} onWordsCompleted={handleSetWordsCompleted} showGameResult={showGameResult} levelStarted={levelStarted}/>)}
       </div>
     <div className='stage__stats'>
       <div className="stage__mistakes">Celkem chyb: {mistakeCount}</div>

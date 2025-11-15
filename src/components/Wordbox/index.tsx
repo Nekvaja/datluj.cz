@@ -8,9 +8,10 @@ interface IWordboxProp {
   onMistakeCount: () => void,
   onWordsCompleted: () => void,
   showGameResult: boolean,
+  levelStarted: boolean,
 }
 
-const Wordbox : React.FC<IWordboxProp> = ({ word, onFinish, active, onMistakeCount, onWordsCompleted, showGameResult}) => {
+const Wordbox : React.FC<IWordboxProp> = ({ word, onFinish, active, onMistakeCount, onWordsCompleted, showGameResult, levelStarted}) => {
   const [lettersLeft, setLettersLeft] = useState<string>(word);  
   const [mistake, setMistake] = useState<boolean>(false);
   const [isFinishAnim, setIsFinishAnim] = useState<boolean>(false);
@@ -40,13 +41,13 @@ const Wordbox : React.FC<IWordboxProp> = ({ word, onFinish, active, onMistakeCou
     }
   };
 
-    (active && !showGameResult) && document.addEventListener('keyup', handleKeyup)
+    (active && !showGameResult && levelStarted) && document.addEventListener('keyup', handleKeyup)
 
     return () => {
       document.removeEventListener('keyup', handleKeyup)
     }
 
-  }, [lettersLeft, onFinish, active, onMistakeCount, showGameResult]);
+  }, [lettersLeft, onFinish, active, onMistakeCount, showGameResult, word]);
 
   let mistakeClassName : string = 'wordbox';
 
