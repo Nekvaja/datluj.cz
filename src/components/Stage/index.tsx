@@ -77,7 +77,7 @@ const Stage = () => {
   }
 
   const handleNextStep = () => {
-    if (done === false) {
+    if (done === false || win === true) {
     setShowGameResult(false)
     setMistakeCount(0)
     setCorrectWords(0)
@@ -85,6 +85,7 @@ const Stage = () => {
     setTimeleft(totalTime)
     setLetterCount(3)
     setWords(createWordsForLevel(3))
+    setWin(false);
 
     } else {
       setShowGameResult(false)
@@ -95,7 +96,6 @@ const Stage = () => {
       setWords(createWordsForLevel(letterCount +1))
     }
   } 
-
 
     useEffect(() => {
      const interval = window.setInterval(() => {

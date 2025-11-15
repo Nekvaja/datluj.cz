@@ -21,7 +21,8 @@
     line-height: 1;
 }
 
-.gameresult__done {
+.gameresult__done, 
+.gameresult__win {
     color: #8fb935;
 }
 

@@ -10,7 +10,7 @@ export const GameResult = ({ done, onNextStep, win }: GameResultProps) => {
   if (done) {
     if (win) {
       return (
-        <div className="gameResult gameresult__done">
+        <div className="gameResult gameresult__win">
           <div className="gameResult__result">Výborně! Zvládl/a jsi všechna slova.</div>
           <div className="gameresult__action" onClick={onNextStep}>
             Hrát znovu
