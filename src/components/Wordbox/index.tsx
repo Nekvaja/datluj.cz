@@ -7,14 +7,20 @@ interface IWordboxProp {
   active: boolean,
   onMistakeCount: () => void,
   onWordsCompleted: () => void,
+  showGameResult: boolean,
 }
 
-const Wordbox : React.FC<IWordboxProp> = ({ word, onFinish, active, onMistakeCount, onWordsCompleted}) => {
+const Wordbox : React.FC<IWordboxProp> = ({ word, onFinish, active, onMistakeCount, onWordsCompleted, showGameResult}) => {
   const [lettersLeft, setLettersLeft] = useState<string>(word);  
   const [mistake, setMistake] = useState<boolean>(false);
   const [isFinishAnim, setIsFinishAnim] = useState<boolean>(false);
 
   useEffect(() => {
+
+    if (!showGameResult) {
+
+      
+    }
 
     const handleKeyup = (e: KeyboardEvent) => {
       if (e.key === lettersLeft.slice(0,1)) {
@@ -34,7 +40,7 @@ const Wordbox : React.FC<IWordboxProp> = ({ word, onFinish, active, onMistakeCou
     }
   };
 
-    active && document.addEventListener('keyup', handleKeyup)
+    (active && !showGameResult) && document.addEventListener('keyup', handleKeyup)
 
     return () => {
       document.removeEventListener('keyup', handleKeyup)
