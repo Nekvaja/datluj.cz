@@ -1,0 +1,10 @@
+.countDown {
+    z-index: 1;  
+    position: absolute;
+    top: 7rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: grey;
+    font-size: 12rem;
+    font-weight: 800;
+}
