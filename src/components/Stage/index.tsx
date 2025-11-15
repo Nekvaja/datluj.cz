@@ -39,7 +39,7 @@ const Stage = () => {
   const [totalTime, setTotalTime] = useState<number>(5000);
   const [timeLeft, setTimeleft] = useState<number>(totalTime);
   const [showGameResult, setShowGameResult] = useState<boolean>(false);
-  const [win, setWin] = useState<boolean>(false);
+  const [done, setdone] = useState<boolean>(false);
 
   const handleFinish = () => {
     setWords((prev) => {
@@ -74,7 +74,7 @@ const Stage = () => {
   }
 
   const handleNextStep = () => {
-    if (win === false) {
+    if (done === false) {
     setShowGameResult(false)
     setMistakeCount(0)
     setCorrectWords(0)
@@ -85,7 +85,7 @@ const Stage = () => {
 
     } else {
       setShowGameResult(false)
-      setWin(false)
+      setdone(false)
       setTimeleft(totalTime)
       setCorrectWords(0)
       setLetterCount((prev) => prev + 1)
@@ -108,7 +108,7 @@ const Stage = () => {
     if ((timeLeft > 0 && correctWords >= 2)) {
       clearInterval(interval)
       setShowGameResult(true)
-      setWin(true)
+      setdone(true)
     }
    
 
@@ -156,7 +156,7 @@ const Stage = () => {
     </div>
     </div>
 
-     {showGameResult && <GameResult win={win} onNextStep={handleNextStep}/>}
+     {showGameResult && <GameResult done={done} onNextStep={handleNextStep}/>}
     </>
   );
 

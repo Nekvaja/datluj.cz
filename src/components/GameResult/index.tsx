@@ -1,16 +1,16 @@
 import "./style.css";
 
 interface GameResultProps {
-    win: boolean;
+    done: boolean;
     onNextStep: () => void;
 }
 
-export const GameResult = ({win, onNextStep} : GameResultProps) => {
+export const GameResult = ({done, onNextStep} : GameResultProps) => {
                  
-    if (win) {
+    if (done) {
     
     return (
-        <div className="gameResult gameresult__win">
+        <div className="gameResult gameresult__done">
             <div className= "gameResult__result">Splněno</div>
             <div 
                 className= "gameresult__action"
