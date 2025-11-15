@@ -100,6 +100,7 @@ const Stage = ({onStartGame} : stageProps) => {
     setWin(false);
     setLevelStarted(false);
     setStartCountdown(3);
+    setWordHasMistake(false)
 
     } else {
       setShowGameResult(false)
@@ -110,6 +111,7 @@ const Stage = ({onStartGame} : stageProps) => {
       setWords(createWordsForLevel(letterCount +1))
       setLevelStarted(false);
       setStartCountdown(3);
+      setWordHasMistake(false);
     }
   } 
 

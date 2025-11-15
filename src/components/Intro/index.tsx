@@ -29,6 +29,7 @@ export const Intro = ({onStartGame} : IntroProps) => {
           className="intro__start-button"
           type="button"
           onClick={onStartGame}
+          autoFocus
         >
           Start
         </button>

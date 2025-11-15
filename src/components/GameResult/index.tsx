@@ -18,7 +18,9 @@ export const GameResult = ({ done, onNextStep, win, onStartGame }: GameResultPro
           <button
                 type="button" 
                 className="gameresult__action" 
-                onClick={onNextStep}>
+                onClick={onNextStep}
+                autoFocus
+                >
             Hrát znovu
           </button>
          <button
@@ -35,7 +37,9 @@ export const GameResult = ({ done, onNextStep, win, onStartGame }: GameResultPro
           <button 
             type="button"
             className="gameresult__action" 
-            onClick={onNextStep}>
+            onClick={onNextStep}
+            autoFocus
+            >
             Pokračovat na další úroveň
           </button>
           <button
@@ -53,7 +57,9 @@ export const GameResult = ({ done, onNextStep, win, onStartGame }: GameResultPro
         <button 
             type="button"
             className="gameresult__action" 
-            onClick={onNextStep}>
+            onClick={onNextStep}
+            autoFocus
+            >
           Zkusit znovu
         </button>
         <button
