@@ -18,7 +18,11 @@ const Wordbox : React.FC<IWordboxProp> = ({ word, onFinish, active, onMistakeCou
   useEffect(() => {
 
     
+    const blockedKeys = ["Enter", "Escape", "Shift", "Control", "Tab", " ", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"]
+
     const handleKeyup = (e: KeyboardEvent) => {
+      if (blockedKeys.includes(e.key)) return;
+
       if (e.key === lettersLeft.slice(0,1)) {
         setMistake(false);
 
