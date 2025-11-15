@@ -17,11 +17,7 @@ const Wordbox : React.FC<IWordboxProp> = ({ word, onFinish, active, onMistakeCou
 
   useEffect(() => {
 
-    if (!showGameResult) {
-
-      
-    }
-
+    
     const handleKeyup = (e: KeyboardEvent) => {
       if (e.key === lettersLeft.slice(0,1)) {
         setMistake(false);
