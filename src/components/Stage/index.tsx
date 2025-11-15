@@ -21,8 +21,17 @@ const generateWord = (size: number) => {
   return words[wordIndex];
 };
 
+const createWordsForLevel = (letterCount : number) => {
+  const first = generateWord(letterCount);
+  const second = generateWord(letterCount);
+  const third = generateWord(letterCount);
+
+  return [first, second, third]
+}
+
 const Stage = () => {
-  const [words, setWords] = useState<string[]>(['jahoda', 'hadice', 'kostka']);
+  const [letterCount, setLetterCount] = useState<number>(3);
+  const [words, setWords] = useState<(string | null)[]>(() => createWordsForLevel(letterCount));
   const [mistakeCount, setMistakeCount] = useState<number>(0);
   const [wordsCompleted, setWordsCompleted] = useState<number>(0);
   const [wordHasMistake, setWordHasMistake] = useState<boolean>(false);
@@ -34,7 +43,7 @@ const Stage = () => {
 
   const handleFinish = () => {
     setWords((prev) => {
-      const nextWord = generateWord(6);
+      const nextWord = generateWord(letterCount);
       if (nextWord) {
         return [...prev.slice(1), nextWord] 
       } return prev;
@@ -46,6 +55,8 @@ const Stage = () => {
 
     setWordHasMistake(false);
   }
+
+
 
   const handleMistakeCount = () => {
     setMistakeCount((prev) => {
@@ -62,6 +73,28 @@ const Stage = () => {
     })
   }
 
+  const handleNextStep = () => {
+    if (win === false) {
+    setShowGameResult(false)
+    setMistakeCount(0)
+    setCorrectWords(0)
+    setWordsCompleted(0)
+    setTimeleft(totalTime)
+    setLetterCount(3)
+    setWords(createWordsForLevel(3))
+
+    } else {
+      setShowGameResult(false)
+      setWin(false)
+      setTimeleft(totalTime)
+      setCorrectWords(0)
+      setLetterCount((prev) => prev + 1)
+      setWords(createWordsForLevel(letterCount +1))
+    }
+  } 
+
+
+
     useEffect(() => {
      const interval = window.setInterval(() => {
       setTimeleft((prev) => { return prev -1})
@@ -72,7 +105,7 @@ const Stage = () => {
       setShowGameResult(true)
     };
 
-    if ((timeLeft > 0 && correctWords >= 1)) {
+    if ((timeLeft > 0 && correctWords >= 2)) {
       clearInterval(interval)
       setShowGameResult(true)
       setWin(true)
@@ -82,6 +115,8 @@ const Stage = () => {
     return () => clearInterval(interval); 
 
   }, [timeLeft, showGameResult]);
+
+
 
   const formatTime = (ms: number) => {
     
@@ -121,7 +156,7 @@ const Stage = () => {
     </div>
     </div>
 
-     {showGameResult && <GameResult win={win}/>}
+     {showGameResult && <GameResult win={win} onNextStep={handleNextStep}/>}
     </>
   );
 
