@@ -1,7 +1,7 @@
 import "./style.css";
 
-export const CountDown = () => {
+export const Countdown = () => {
     return (
-        <div className="countDown">3</div>
+        <div className="countdown">3</div>
     )
 }

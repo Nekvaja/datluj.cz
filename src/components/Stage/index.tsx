@@ -4,7 +4,7 @@ import wordList from '../../word-list';
 import './style.css';
 import { ClockIcon } from '../ClockIcon';
 import { GameResult } from '../GameResult';
-import { CountDown } from '../CountDown';
+import { Countdown } from '../Countdown';
 
 // TODO: temporary disable function - remove next line when you start using it
 /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
@@ -164,7 +164,7 @@ const Stage = () => {
     </div>
 
      {showGameResult && <GameResult done={done} onNextStep={handleNextStep} win={win}/>}
-     <CountDown/>
+     <Countdown/>
     </>
   );
 
