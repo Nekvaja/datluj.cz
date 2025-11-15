@@ -40,8 +40,11 @@ const Stage = () => {
   const [timeLeft, setTimeleft] = useState<number>(totalTime);
   const [showGameResult, setShowGameResult] = useState<boolean>(false);
   const [done, setdone] = useState<boolean>(false);
+  const [win, setWin] = useState<boolean>(false);
+
 
   const handleFinish = () => {
+
     setWords((prev) => {
       const nextWord = generateWord(letterCount);
       if (nextWord) {
@@ -94,7 +97,6 @@ const Stage = () => {
   } 
 
 
-
     useEffect(() => {
      const interval = window.setInterval(() => {
       setTimeleft((prev) => { return prev -1})
@@ -106,10 +108,14 @@ const Stage = () => {
     };
 
     if ((timeLeft > 0 && correctWords >= 2)) {
+      if (letterCount === 4) {
+        setWin(true)
+      }
       clearInterval(interval)
       setShowGameResult(true)
       setdone(true)
     }
+
    
 
     return () => clearInterval(interval); 
@@ -156,7 +162,7 @@ const Stage = () => {
     </div>
     </div>
 
-     {showGameResult && <GameResult done={done} onNextStep={handleNextStep}/>}
+     {showGameResult && <GameResult done={done} onNextStep={handleNextStep} win={win}/>}
     </>
   );
 
