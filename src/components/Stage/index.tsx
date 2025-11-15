@@ -89,6 +89,8 @@ const Stage = () => {
     setLetterCount(3)
     setWords(createWordsForLevel(3))
     setWin(false);
+    setLevelStarted(false);
+    setStartCountdown(3);
 
     } else {
       setShowGameResult(false)
@@ -97,13 +99,19 @@ const Stage = () => {
       setCorrectWords(0)
       setLetterCount((prev) => prev + 1)
       setWords(createWordsForLevel(letterCount +1))
+      setLevelStarted(false);
+      setStartCountdown(3);
     }
   } 
 
     useEffect(() => {
-     const interval = window.setInterval(() => {
+      
+      if (levelStarted) {
+
+        const interval = window.setInterval(() => {
       setTimeleft((prev) => { return prev -1})
     }, 1);
+
 
     if (timeLeft === 0){
       clearInterval(interval)
@@ -119,11 +127,12 @@ const Stage = () => {
       setdone(true)
     }
 
-   
-
     return () => clearInterval(interval); 
 
-  }, [timeLeft, showGameResult]);
+      }
+     
+
+  }, [timeLeft, showGameResult, levelStarted]);
 
 
   const formatTime = (ms: number) => {
@@ -141,14 +150,14 @@ const Stage = () => {
 
 
    useEffect(() => {
-
-    const interval = window.setInterval(() => {
-      if (typeof startCountdown === 'number' ) 
+    
+    const interval = window.setInterval(() => { 
       setStartCountdown((prev) => prev-1)
     }, 1000);
 
-    if (startCountdown === 0) {
+    if (startCountdown === -1) {
       clearInterval(interval);
+      setLevelStarted(true);
     }
 
     return () => clearInterval(interval);
@@ -181,7 +190,7 @@ const Stage = () => {
     </div>
 
      {showGameResult && <GameResult done={done} onNextStep={handleNextStep} win={win}/>}
-     <Countdown startCountdown={startCountdown}/>
+     <Countdown startCountdown={startCountdown} levelStarted={levelStarted}/>
     </>
   );
 
