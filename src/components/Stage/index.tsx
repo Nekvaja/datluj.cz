@@ -5,6 +5,7 @@ import './style.css';
 import { ClockIcon } from '../ClockIcon';
 import { GameResult } from '../GameResult';
 import { Countdown } from '../Countdown';
+import type { startGameHandler } from '../../App';
 
 
 const generateWord = (size: number) => {
@@ -29,7 +30,13 @@ const createWordsForLevel = (letterCount : number) => {
   return [first, second, third]
 }
 
-const Stage = () => {
+
+export interface stageProps {
+  onStartGame: startGameHandler;
+}
+
+
+const Stage = ({onStartGame} : stageProps) => {
   const [letterCount, setLetterCount] = useState<number>(3);
   const [words, setWords] = useState<(string | null)[]>(() => createWordsForLevel(letterCount));
   const [mistakeCount, setMistakeCount] = useState<number>(0);
@@ -188,7 +195,7 @@ const Stage = () => {
     </div>
     </div>
 
-     {showGameResult && <GameResult done={done} onNextStep={handleNextStep} win={win}/>}
+     {showGameResult && <GameResult done={done} onNextStep={handleNextStep} win={win} onStartGame={onStartGame}/>}
      <Countdown startCountdown={startCountdown} levelStarted={levelStarted}/>
     </>
   );

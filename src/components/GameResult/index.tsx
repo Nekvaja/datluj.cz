@@ -1,12 +1,15 @@
 import "./style.css";
+import type { startGameHandler } from "../../App";
+
 
 interface GameResultProps {
     done: boolean;
     onNextStep: () => void;
     win: boolean;
+    onStartGame: startGameHandler;
 }
 
-export const GameResult = ({ done, onNextStep, win }: GameResultProps) => {
+export const GameResult = ({ done, onNextStep, win, onStartGame }: GameResultProps) => {
   if (done) {
     if (win) {
       return (
@@ -15,7 +18,10 @@ export const GameResult = ({ done, onNextStep, win }: GameResultProps) => {
           <div className="gameresult__action" onClick={onNextStep}>
             Hrát znovu
           </div>
-          <div className="gameresult__exit">Ukončit</div>
+          <div 
+            className="gameresult__exit"
+            onClick={onStartGame}
+            >Ukončit</div>
         </div>
       );
     } else {
@@ -25,7 +31,10 @@ export const GameResult = ({ done, onNextStep, win }: GameResultProps) => {
           <div className="gameresult__action" onClick={onNextStep}>
             Pokračovat na další úroveň
           </div>
-          <div className="gameresult__exit">Ukončit</div>
+          <div 
+            className="gameresult__exit"
+            onClick={onStartGame}
+            >Ukončit</div>
         </div>
       );
     }
@@ -36,7 +45,10 @@ export const GameResult = ({ done, onNextStep, win }: GameResultProps) => {
         <div className="gameresult__action" onClick={onNextStep}>
           Zkusit znovu
         </div>
-        <div className="gameresult__exit">Ukončit</div>
+        <div 
+            className="gameresult__exit"
+            onClick={onStartGame}    
+            >Ukončit</div>
       </div>
     );
   }
