@@ -1,4 +1,4 @@
-export interface LevelConfig {
+export default interface LevelConfig {
     level: number,
     wordsTarget: number,
     time: number,
