@@ -42,6 +42,8 @@ const Stage = () => {
   const [showGameResult, setShowGameResult] = useState<boolean>(false);
   const [done, setdone] = useState<boolean>(false);
   const [win, setWin] = useState<boolean>(false);
+  const [startCountdown, setStartCountdown] = useState<number>(3);
+  const [levelStarted, setLevelStarted] = useState<boolean>(false);
 
 
   const handleFinish = () => {
@@ -124,7 +126,6 @@ const Stage = () => {
   }, [timeLeft, showGameResult]);
 
 
-
   const formatTime = (ms: number) => {
     
     const seconds = Math.floor((ms % 60000) / 1000);
@@ -137,6 +138,22 @@ const Stage = () => {
   const timer = formatTime(timeLeft);
 
   const percentage : number = (timeLeft / totalTime) * 100;
+
+
+   useEffect(() => {
+
+    const interval = window.setInterval(() => {
+      if (typeof startCountdown === 'number' ) 
+      setStartCountdown((prev) => prev-1)
+    }, 1000);
+
+    if (startCountdown === 0) {
+      clearInterval(interval);
+    }
+
+    return () => clearInterval(interval);
+
+  }, [startCountdown]);
 
 
   return (
@@ -164,7 +181,7 @@ const Stage = () => {
     </div>
 
      {showGameResult && <GameResult done={done} onNextStep={handleNextStep} win={win}/>}
-     <Countdown/>
+     <Countdown startCountdown={startCountdown}/>
     </>
   );
 
