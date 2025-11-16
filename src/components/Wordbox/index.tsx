@@ -47,7 +47,7 @@ const Wordbox : React.FC<IWordboxProp> = ({ word, onFinish, active, onMistakeCou
       document.removeEventListener('keyup', handleKeyup)
     }
 
-  }, [lettersLeft, onFinish, active, onMistakeCount, showGameResult, word]);
+  }, [lettersLeft, onFinish, active, onMistakeCount, showGameResult, word, levelStarted]);
 
   let mistakeClassName : string = 'wordbox';
 

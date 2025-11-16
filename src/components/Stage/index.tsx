@@ -49,6 +49,7 @@ const Stage = ({onStartGame} : stageProps) => {
   const [correctWords, setCorrectWords] = useState<number>(0);
   const [totalTime, setTotalTime] = useState<number>(levels[0].time);
   const [wordsTarget, setWordsTarget] = useState<number>(levels[0].wordsTarget)
+  const [levelIndex, setLevelIndex] = useState<number>(0)
   const [timeLeft, setTimeleft] = useState<number>(totalTime);
   const [showGameResult, setShowGameResult] = useState<boolean>(false);
   const [done, setdone] = useState<boolean>(false);
@@ -111,6 +112,14 @@ const Stage = ({onStartGame} : stageProps) => {
       setCorrectWords(0)
       setLetterCount((prev) => prev + 1)
       setWords(createWordsForLevel(letterCount +1))
+
+      setLevelIndex((prev) => {
+        const newLevelIndex = prev + 1;
+        setTotalTime(levels[newLevelIndex].time);
+        setWordsTarget(levels[newLevelIndex].wordsTarget);
+        return newLevelIndex;
+      })
+      
       setLevelStarted(false);
       setStartCountdown(3);
       setWordHasMistake(false);
@@ -131,8 +140,8 @@ const Stage = ({onStartGame} : stageProps) => {
       setShowGameResult(true)
     };
 
-    if ((timeLeft > 0 && correctWords >= 2)) {
-      if (letterCount === 4) {
+    if ((timeLeft > 0 && correctWords >= wordsTarget)) {
+      if (letterCount === levels.length) {
         setWin(true)
       }
       clearInterval(interval)
