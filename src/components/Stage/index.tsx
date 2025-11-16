@@ -225,7 +225,7 @@ const Stage = ({onStartGame} : stageProps) => {
     </div>
     </div>
 
-     {/* {showGameResult && <GameResult done={done} onNextStep={handleNextStep} win={win} onStartGame={onStartGame}/>} */}
+     {showGameResult && <GameResult done={done} onNextStep={handleNextStep} win={win} onStartGame={onStartGame}/>}
      <Countdown startCountdown={startCountdown} levelStarted={levelStarted}/>
     </>
   );
