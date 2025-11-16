@@ -137,8 +137,8 @@ const Stage = ({onStartGame} : stageProps) => {
       if (levelStarted) {
 
         const interval = window.setInterval(() => {
-      setTimeleft((prev) => { return prev -1})
-    }, 1);
+      setTimeleft((prev) => { return prev -10})
+    }, 10);
 
 
     if (timeLeft === 0){
