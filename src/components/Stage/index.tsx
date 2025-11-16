@@ -6,7 +6,7 @@ import { ClockIcon } from '../ClockIcon';
 import { GameResult } from '../GameResult';
 import { Countdown } from '../Countdown';
 import type { startGameHandler } from '../../App';
-import levels from '../../levels-list';
+import { levels } from '../../levels-list';
 
 
 const generateWord = (size: number) => {
@@ -47,7 +47,8 @@ const Stage = ({onStartGame} : stageProps) => {
   const [wordsCompleted, setWordsCompleted] = useState<number>(0);
   const [wordHasMistake, setWordHasMistake] = useState<boolean>(false);
   const [correctWords, setCorrectWords] = useState<number>(0);
-  const [totalTime, setTotalTime] = useState<number>(5000);
+  const [totalTime, setTotalTime] = useState<number>(levels[0].time);
+  const [wordsTarget, setWordsTarget] = useState<number>(levels[0].wordsTarget)
   const [timeLeft, setTimeleft] = useState<number>(totalTime);
   const [showGameResult, setShowGameResult] = useState<boolean>(false);
   const [done, setdone] = useState<boolean>(false);
@@ -186,7 +187,7 @@ const Stage = ({onStartGame} : stageProps) => {
           style={{width: `${percentage}%`}}
           ></div>
       </div>
-      <div className='stage__target'>cíl: 10 slov bez chyby</div>
+      <div className='stage__target'>cíl: {wordsTarget} slov bez chyby</div>
       <div className='stage__timer'>
         <ClockIcon/>
          {timer}</div> 
