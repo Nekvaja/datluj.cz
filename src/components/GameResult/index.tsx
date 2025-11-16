@@ -14,7 +14,7 @@ export const GameResult = ({ done, onNextStep, win, onStartGame }: GameResultPro
     if (win) {
       return (
         <div className="gameResult gameresult__win">
-          <div className="gameResult__result">Výborně! Zvládl/a jsi všechna slova.</div>
+          <div className="gameResult__result">Skvělé! Zvládl/a jsi všechna slova.</div>
           <button
                 type="button" 
                 className="gameresult__action" 
@@ -33,7 +33,7 @@ export const GameResult = ({ done, onNextStep, win, onStartGame }: GameResultPro
     } else {
       return (
         <div className="gameResult gameresult__done">
-          <div className="gameResult__result">Splněno</div>
+          <div className="gameResult__result">Výborně</div>
           <button 
             type="button"
             className="gameresult__action" 
@@ -53,7 +53,7 @@ export const GameResult = ({ done, onNextStep, win, onStartGame }: GameResultPro
   } else {
     return (
       <div className="gameResult gameresult__loss">
-        <div className="gameResult__result">Nesplněno</div>
+        <div className="gameResult__result">Tentokrát to nevyšlo. Zkus to znovu!</div>
         <button 
             type="button"
             className="gameresult__action" 

@@ -47,6 +47,9 @@ export interface stageProps {
 
 
 const Stage = ({onStartGame} : stageProps) => {
+
+    const totalLevels = levels.length;
+
   const [letterCount, setLetterCount] = useState<number>(3);
   const [words, setWords] = useState<(string)[]>(() => createWordsForLevel(letterCount));
   const [mistakeCount, setMistakeCount] = useState<number>(0);
@@ -202,22 +205,27 @@ const Stage = ({onStartGame} : stageProps) => {
           style={{width: `${percentage}%`}}
           ></div>
       </div>
-      <div className='stage__target'>cíl: {wordsTarget} slov bez chyby</div>
+     
       <div className='stage__timer'>
         <ClockIcon/>
          {timer}</div> 
+
+    <div className='stage__level'>Level {levels[levelIndex].level} / {totalLevels}</div>
+
       <div className="stage__correct">{correctWords}</div>
+      <div className='stage__target'>cíl: <strong>{wordsTarget}</strong> slov bez chyby</div>
+
       
       <div className="stage__words">
         {words.map((word, index) => <Wordbox word={word} key={index} onFinish={handleFinish} active={index === 0} onMistakeCount={handleMistakeCount} onWordsCompleted={handleSetWordsCompleted} showGameResult={showGameResult} levelStarted={levelStarted}/>)}
       </div>
-    <div className='stage__stats'>
+    <div className='stage__statistics'>
       <div className="stage__mistakes">Celkem chyb: {mistakeCount}</div>
       <div className="stage__finished">Celkem dokončeno: {wordsCompleted} slov</div>
     </div>
     </div>
 
-     {showGameResult && <GameResult done={done} onNextStep={handleNextStep} win={win} onStartGame={onStartGame}/>}
+     {/* {showGameResult && <GameResult done={done} onNextStep={handleNextStep} win={win} onStartGame={onStartGame}/>} */}
      <Countdown startCountdown={startCountdown} levelStarted={levelStarted}/>
     </>
   );

@@ -35,18 +35,17 @@
   background-color: #8fb935;
 }
 
-.stage__stats {
+.stage__statistics {
   display: flex;
   gap: 2rem;
 }
 
 .stage__timer {
   font-size: 1rem;
-  margin-bottom: 0.3rem;
+  margin-top: 0.3rem;
 }
 
 .stage__target {
-  margin-top: 0.5rem;
   font-size: 1rem;
 }
 
@@ -56,3 +55,4 @@
   color: #8fb935;
   margin-top: 1rem;
 }
+
