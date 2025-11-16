@@ -28,8 +28,14 @@ const generateWord = (size: number) => {
 
 const createWordsForLevel = (letterCount : number) => {
   const first = generateWord(letterCount);
-  const second = generateWord(letterCount);
-  const third = generateWord(letterCount);
+  let second = generateWord(letterCount);
+    while (second === first) {
+      second = generateWord(letterCount)
+    }
+  let third = generateWord(letterCount);
+    while (third === first || third === second) {
+      third = generateWord(letterCount)
+    }
 
   return [first, second, third]
 }
@@ -141,9 +147,9 @@ const Stage = ({onStartGame} : stageProps) => {
     };
 
     if ((timeLeft > 0 && correctWords >= wordsTarget)) {
-      if (letterCount === levels.length) {
+      if (levelIndex === wordList.length -1) {
         setWin(true)
-      }
+      };
       clearInterval(interval)
       setShowGameResult(true)
       setdone(true)
@@ -154,7 +160,7 @@ const Stage = ({onStartGame} : stageProps) => {
       }
      
 
-  }, [timeLeft, showGameResult, levelStarted]);
+  }, [timeLeft, showGameResult, levelStarted, levelIndex, correctWords, wordsTarget]);
 
 
   const formatTime = (ms: number) => {
@@ -203,7 +209,7 @@ const Stage = ({onStartGame} : stageProps) => {
       <div className="stage__correct">{correctWords}</div>
       
       <div className="stage__words">
-        {words.map((word, index) => <Wordbox word={word} key={word} onFinish={handleFinish} active={index === 0} onMistakeCount={handleMistakeCount} onWordsCompleted={handleSetWordsCompleted} showGameResult={showGameResult} levelStarted={levelStarted}/>)}
+        {words.map((word, index) => <Wordbox word={word} key={index} onFinish={handleFinish} active={index === 0} onMistakeCount={handleMistakeCount} onWordsCompleted={handleSetWordsCompleted} showGameResult={showGameResult} levelStarted={levelStarted}/>)}
       </div>
     <div className='stage__stats'>
       <div className="stage__mistakes">Celkem chyb: {mistakeCount}</div>

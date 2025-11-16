@@ -49,6 +49,13 @@ const Wordbox : React.FC<IWordboxProp> = ({ word, onFinish, active, onMistakeCou
 
   }, [lettersLeft, onFinish, active, onMistakeCount, showGameResult, word, levelStarted]);
 
+
+  useEffect(() => {
+    setLettersLeft(word);
+    setMistake(false);
+    setIsFinishAnim(false);
+  }, [word])
+
   let mistakeClassName : string = 'wordbox';
 
   if (active) {
