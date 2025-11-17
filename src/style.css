@@ -16,6 +16,11 @@ html {
 }
 
 button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+button {
     cursor: pointer;
     transition: transform 0.2s ease;
 }
