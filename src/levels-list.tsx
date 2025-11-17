@@ -8,8 +8,8 @@ export default interface LevelConfig {
 export const levels : LevelConfig[] = [
     {
         level: 1,
-        wordsTarget: 10,
-        time: 30000,
+        wordsTarget: 30000,
+        time: 15000,
     },
     {
         level: 2,

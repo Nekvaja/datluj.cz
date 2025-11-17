@@ -14,6 +14,7 @@ interface IWordboxProp {
 const Wordbox : React.FC<IWordboxProp> = ({ word, onFinish, active, onMistakeCount, onWordsCompleted, showGameResult, levelStarted}) => {
   const [lettersLeft, setLettersLeft] = useState<string>(word);  
   const [mistake, setMistake] = useState<boolean>(false);
+  const [mistakeAtemp, setMistakeAttemp] = useState<number>(0);
   const [isFinishAnim, setIsFinishAnim] = useState<boolean>(false);
 
   useEffect(() => {
@@ -38,6 +39,7 @@ const Wordbox : React.FC<IWordboxProp> = ({ word, onFinish, active, onMistakeCou
     } else {
       setMistake(true);
       onMistakeCount();
+      setMistakeAttemp((prev) => prev + 1);
     }
   };
 
@@ -71,7 +73,7 @@ const Wordbox : React.FC<IWordboxProp> = ({ word, onFinish, active, onMistakeCou
   }
 
   return (
-    <div className={mistakeClassName}>{lettersLeft}</div>
+    <div className={mistakeClassName} key={mistakeAtemp}>{lettersLeft}</div>
   );
 };
 
