@@ -70,7 +70,12 @@ const Stage = ({onStartGame} : stageProps) => {
   const handleFinish = () => {
 
     setWords((prev) => {
-      const nextWord = generateWord(letterCount);
+      let nextWord = generateWord(letterCount);
+
+      while (prev.includes(nextWord)) {
+        nextWord = generateWord(letterCount)
+      };
+
       if (nextWord) {
         return [...prev.slice(1), nextWord] 
       } return prev;
