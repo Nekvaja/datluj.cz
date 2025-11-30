@@ -1,7 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
 
+:root {
+  --background-primary: white;
+  --background-secondary: #efefef;
+  --accent: #8fb935;
+  --accent-secondary: grey;
+  --text-primary: #1f2403;
+  --text-secondary: white;
+  --text-accent: grey;
+  --mistake: #e64747;
+  --first-letter: white;
+}
+
+:root[data-theme='dark'] {
+  --background-primary: #476462;
+  --background-secondary: #192f2d;
+  --background-overlay: rgba(6, 6, 6, 0.909);
+  --accent: #8fb935;
+  --accent-secondary: grey;
+  --text-primary: white;
+  --text-secondary: white;
+  --text-accent: white;
+  --mistake: #e64747;
+  --first-letter:  #1b2625;
+}
+
+
 * {
   box-sizing: border-box;
+}
+
+body {
+  background-color: var(--background-primary);
 }
 
 html {
@@ -18,12 +48,11 @@ html {
 button {
   -webkit-appearance: none;
   appearance: none;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: transform 0.2s ease;
 }
 
-button {
-    cursor: pointer;
-    transition: transform 0.2s ease;
-}
 
 button:hover {
     transform: scale(1.05);
@@ -37,4 +66,8 @@ button:focus-visible {
   outline: 1px solid #ffb400;
   border-radius: 4px;  
   outline-offset: 1px;
+}
+
+h1 {
+  color: var(--text-secondary);
 }

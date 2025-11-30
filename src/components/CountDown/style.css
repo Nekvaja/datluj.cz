@@ -4,7 +4,7 @@
     top: 7rem;
     left: 50%;
     transform: translateX(-50%);
-    color: grey;
+    color: var(--text-accent);
     font-size: 12rem;
     font-weight: 800;
 }

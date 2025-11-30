@@ -6,9 +6,9 @@
     top: 6.5rem;
     left: 50%;
     transform: translateX(-50%);
-    background-color: rgb(0, 0, 0, 0.75);
+    background-color: var(--background-overlay);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    color: white;
+    color: var(--text-secondary);
     border-radius: 10px;
     max-width: 500px;
     padding: 3rem;  
@@ -23,7 +23,7 @@
 
 .gameresult__done, 
 .gameresult__win {
-    color: #8fb935;
+    color: var(--accent);
 }
 
 .gameresult__loss {
@@ -32,8 +32,8 @@
 
 .gameresult__action {
     border: none;
-    color: black;
-    background-color: #efefefe8;
+    color: var(--text-primary);
+    background-color: var(--accent);
     font-size: 1.5rem;
     padding: 1rem;
     border-radius: 8px;
@@ -44,7 +44,7 @@
     border: none;
     font-size: 1.5rem;
     font-weight: 600;
-    color: white;
+    color: var(--text-secondary);
 }
 
 .gameresult__exit:hover {

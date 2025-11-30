@@ -1,7 +1,7 @@
 .intro {
-    color: rgb(94, 94, 94);
+    color: var(--text-accent);
     height: 360px;
-    background-color: #efefef;
+    background-color: var(--background-secondary);
     border-radius: 8px;
     display: flex;
     flex-direction: column;
@@ -18,11 +18,11 @@
 li {
     list-style: none;
     text-align: left;
-    color: white;
+    color: var(--text-secondary);
 }
 
 ul {
-    background-color: #8fb935;
+    background-color: var(--accent);
     padding: 1rem;
     border-radius: 10px;
 }
@@ -30,7 +30,7 @@ ul {
 .intro__start-button {
     border: none;
     border-radius: 8px;
-    background-color: #8fb935;
+    background-color: var(--accent);
     padding: 1rem;
     font-size: 1.5rem;
 }

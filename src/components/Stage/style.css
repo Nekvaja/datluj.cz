@@ -1,7 +1,7 @@
 .stage {
-  color: rgb(94, 94, 94);
+  color: var(--text-accent);
   height: 360px;
-  background-color: #efefef;
+  background-color: var(--background-secondary);
   border-radius: 8px;
   display: flex;
   flex-direction: column;
@@ -13,7 +13,7 @@
 }
 
 .stage__words {
-  color: black;
+  color: var(--text-primary);
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -25,14 +25,14 @@
 .stage__timer-bar {
   width: 100%;
   height: 8px;
-  background-color: grey;
+  background-color: var(--accent-secondary);
   margin: 0;
 }
 
 .stage__timer-fill {
   width: 100%;
   height: 8px;
-  background-color: #8fb935;
+  background-color: var(--accent);
 }
 
 .stage__statistics {
@@ -52,7 +52,7 @@
 .stage__correct {
   font-size: 4rem;
   font-weight: 700;
-  color: #8fb935;
+  color: var(--accent);
   margin-top: 1rem;
 }
 

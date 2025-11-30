@@ -3,7 +3,7 @@
   position: relative;
   padding: 16px;
   margin: 4px;
-  background-color: #8fb935;
+  background-color: var(--accent);
   font-weight: bold;
   text-align: center;
   text-transform: uppercase;
@@ -23,14 +23,14 @@
 }
 
 .wordbox--mistake {
-  background-color: #e64747;
-  color: black;
+  background-color: var(--mistake);
+  color: var(--text);
   animation: shake 0.25s ease-in-out;
 }
 
 .wordbox.active::first-letter {
   font-size: 1.5rem;
-  color: white;
+  color: var(--first-letter);
 }
 
 .wordbox.active {
