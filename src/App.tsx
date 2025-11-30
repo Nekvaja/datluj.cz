@@ -10,7 +10,7 @@ export type startGameHandler = () => void;
 const App: React.FC = () => {
 
   const [isGameStarted, setIsGameStarted] = useState<boolean>(false);
-  const [theme, setTheme] = useState<string>('dark');
+  const [theme, setTheme] = useState<string>('light');
 
   const handleStartGame = () => setIsGameStarted(!isGameStarted);
 
