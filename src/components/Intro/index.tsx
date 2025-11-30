@@ -2,14 +2,15 @@ import "./style.css"
 
 interface IntroProps {
     onStartGame: () => void;
+    theme: string;
 }
 
-export const Intro = ({onStartGame} : IntroProps) => {
+export const Intro = ({onStartGame, theme} : IntroProps) => {
     return (
       <div className="intro">
         <img
           className="intro__image"
-          src="typewriter_black.png"
+          src={theme === 'light' ? "typewriter_black.png" : "typewriter_white.png"}
           alt="obrázek psacího stroje"
         />
         <div className="intro__content-rules">

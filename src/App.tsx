@@ -43,7 +43,7 @@ const App: React.FC = () => {
       {isGameStarted ? (
         <Stage onStartGame={handleStartGame} />
       ) : (
-        <Intro onStartGame={handleStartGame} />
+        <Intro onStartGame={handleStartGame} theme={theme}/>
       )}
     </div>
   );
