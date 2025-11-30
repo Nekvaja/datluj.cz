@@ -10,18 +10,23 @@ export type startGameHandler = () => void;
 const App: React.FC = () => {
 
   const [isGameStarted, setIsGameStarted] = useState<boolean>(false);
-  const [theme, setTheme] = useState<string>('light');
+  const [theme, setTheme] = useState<string>(() => {
+    const savedTheme =  localStorage.getItem('theme');
+    return savedTheme ? savedTheme : 'dark';
+  });
 
   const handleStartGame = () => setIsGameStarted(!isGameStarted);
 
   useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme)
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem('theme', theme)
   }, [theme])
 
-  const handleTheme = () => {
-    theme === 'light' ? setTheme('dark') : setTheme('light')
-  }
- 
+   
+   const toggleTheme = () => {
+    setTheme((prev) => prev === 'light' ? 'dark' : 'light')
+   }
+
   return (
     <div className="container">
       <h1>Datlování</h1>
@@ -32,9 +37,9 @@ const App: React.FC = () => {
         
         <label 
           className="theme-switch"
-          onChange={handleTheme}
+          onChange={toggleTheme}
           >
-          <input type="checkbox" id="checkbox" />
+          <input type="checkbox" id="checkbox" checked={theme === 'dark'}/>
           <div className="slider round"></div>
         </label>
         
@@ -48,5 +53,6 @@ const App: React.FC = () => {
     </div>
   );
 };
+
 
 export default App;
