@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
 
 :root {
-  --background-primary: white;
+  --background-primary: rgb(244, 248, 243);
   --background-secondary: #efefef;
+  --background-overlay: rgba(1, 1, 1, 0.73);
   --accent: #8fb935;
   --accent-secondary: grey;
   --text-primary: #1f2403;
