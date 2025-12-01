@@ -14,7 +14,7 @@ export const LightModeIcon = () => {
           cy="12"
           r="4"
           stroke="currentColor"
-          stroke-width="2"
+          strokeWidth="2"
           fill="none"
         />
         <line
@@ -23,8 +23,8 @@ export const LightModeIcon = () => {
           x2="12"
           y2="5"
           stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
+          strokeWidth="2"
+          strokeLinecap="round"
         />
         <line
           x1="12"
@@ -32,8 +32,8 @@ export const LightModeIcon = () => {
           x2="12"
           y2="22"
           stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
+          strokeWidth="2"
+          strokeLinecap="round"
         />
         <line
           x1="4.22"
@@ -41,8 +41,8 @@ export const LightModeIcon = () => {
           x2="6.34"
           y2="6.34"
           stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
+          strokeWidth="2"
+          strokeLinecap="round"
         />
         <line
           x1="17.66"
@@ -50,8 +50,8 @@ export const LightModeIcon = () => {
           x2="19.78"
           y2="19.78"
           stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
+          strokeWidth="2"
+          strokeLinecap="round"
         />
         <line
           x1="2"
@@ -59,8 +59,8 @@ export const LightModeIcon = () => {
           x2="5"
           y2="12"
           stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
+          strokeWidth="2"
+          strokeLinecap="round"
         />
         <line
           x1="19"
@@ -68,8 +68,8 @@ export const LightModeIcon = () => {
           x2="22"
           y2="12"
           stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
+          strokeWidth="2"
+          strokeLinecap="round"
         />
         <line
           x1="4.22"
@@ -77,8 +77,8 @@ export const LightModeIcon = () => {
           x2="6.34"
           y2="17.66"
           stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
+          strokeWidth="2"
+          strokeLinecap="round"
         />
         <line
           x1="17.66"
@@ -86,8 +86,8 @@ export const LightModeIcon = () => {
           x2="19.78"
           y2="4.22"
           stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
+          strokeWidth="2"
+          strokeLinecap="round"
         />
       </svg>
     </>

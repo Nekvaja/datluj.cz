@@ -36,10 +36,12 @@ const App: React.FC = () => {
         
         
         <label 
-          className="theme-switch"
-          onChange={toggleTheme}
-          >
-          <input type="checkbox" id="checkbox" checked={theme === 'dark'}/>
+          className="theme-switch">
+          <input 
+            type="checkbox" 
+            id="checkbox" 
+            checked={theme === 'dark'}
+            onChange={toggleTheme}/>
           <div className="slider round"></div>
         </label>
         
